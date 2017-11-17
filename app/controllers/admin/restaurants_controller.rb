@@ -7,7 +7,7 @@ class Admin::RestaurantsController < ApplicationController
 
   # 各action method
   def index
-
+    @restaurants = Restaurant.all
   end
 
 
