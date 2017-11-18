@@ -4,6 +4,7 @@ class Admin::RestaurantsController < ApplicationController
   before_action :authenticate_user!
   # 需要自己撰寫的 authenticate_admin方法，寫在superclass中 /app/controllers/application_controller.rb
   before_action :authenticate_admin
+  before_action :set_restaurant, :only => [:show, :edit, :update]
 
   # 各action method
   def index
@@ -24,11 +25,28 @@ class Admin::RestaurantsController < ApplicationController
   end
 
   def show
+    # set_restaurant
+  end
+
+  def edit
+    # set_restaurant
+  end
+
+  def update
+    # set_restaurant
+    if @restaurant.update_attributes(restaurant_params)
+      redirect_to admin_restaurant_url, :notice => "UPDATE NOTICE: 更新成功！"
+    else
+      render :action => :edit, :notice => "UPDATE NOTICE: 更新失敗！"
+    end
+  end
+
+  private
+
+  def set_restaurant
     @restaurant = Restaurant.find(params[:id])
   end
 
-
-  private
 
   def restaurant_params
     params.require(:restaurant).permit(:name, :tel, :address, :opening_hours, :description)

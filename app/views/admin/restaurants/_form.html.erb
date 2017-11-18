@@ -1,0 +1,30 @@
+
+<!-- 表單驗證 -->
+<% if @restaurant.errors.present? %>
+  <ol>
+  <% @restaurant.errors.each do |error, message|%>
+    <li>WARNING: <%= "#{error.capitalize}  #{message}" %></li>
+  <% end %>
+  </ol>
+<% end %>
+<!-- 建立restaurant record -->
+<%= form_for [:admin, @restaurant] do |restaurant| %>
+  <%= restaurant.label :name, "Name" %>
+  <%= restaurant.text_field :name %>
+
+  <%= restaurant.label :tel, "Tel" %>
+  <%= restaurant.text_field :tel %>
+
+  <%= restaurant.label :address, "Address" %>
+  <%= restaurant.text_field :address%>
+
+  <%= restaurant.label :opening_hours, "Opening Hours" %>
+  <%= restaurant.text_field :opening_hours %>
+
+  <%= restaurant.label :description, "Description" %>
+  <%= restaurant.text_area :description %>
+
+ <%= restaurant.submit %> 
+<%end %>
+
+<%= link_to "Home", admin_restaurants_path %>
