@@ -1,0 +1,20 @@
+
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Tel</th>
+    <th>Address</th>
+    <th>Opening_hours</th>
+    <th>Description</th>
+  </tr>
+
+  <td><%= @restaurant.name %></td>
+  <td><%= @restaurant.tel %></td>
+  <td><%= @restaurant.address %></td>
+  <td><%= @restaurant.opening_hours %></td>
+  <td><%= @restaurant.description %></td>
+
+</table>
+
+<%= link_to "HOME", admin_restaurants_path %>
