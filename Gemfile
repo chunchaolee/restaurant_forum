@@ -37,7 +37,8 @@ gem 'devise'
 gem 'carrierwave'
 # Fake data
 gem 'ffaker'
-
+# pages
+gem 'kaminari'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development

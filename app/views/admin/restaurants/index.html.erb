@@ -27,7 +27,9 @@
       </tr>
       <% end %>
     </table>
-
+    <br \>
+    <%= paginate @restaurants %>
+    <br \>
     <%= link_to "<span class='glyphicon glyphicon-plus'></span>  New Restaurant".html_safe, new_admin_restaurant_path, class: "btn btn-primary" %>
 
   </div>
