@@ -7,6 +7,7 @@
     <th>Address</th>
     <th>Opening_hours</th>
     <th>Description</th>
+    <th>Photo</th>
   </tr>
 
   <td><%= @restaurant.name %></td>
@@ -14,6 +15,7 @@
   <td><%= @restaurant.address %></td>
   <td><%= @restaurant.opening_hours %></td>
   <td><%= @restaurant.description %></td>
+  <td><%= image_tag @restaurant.image, width: '600px' %></td>
 
 </table>
 
