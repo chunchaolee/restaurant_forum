@@ -35,6 +35,9 @@ gem 'devise'
 
 # Photo uploader
 gem 'carrierwave'
+# Fake data
+gem 'ffaker'
+
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
