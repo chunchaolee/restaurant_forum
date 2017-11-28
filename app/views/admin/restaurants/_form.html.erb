@@ -11,29 +11,30 @@
     </ol>
   <% end %>
   <!-- 建立restaurant record -->
-  <%= form_for [:admin, @restaurant] do |restaurant| %>
-    <%= restaurant.label :name, "Name" %>
-    <%= restaurant.text_field :name , class: "form-control" %>
+  <div class="form-group">
+    <%= form_for [:admin, @restaurant] do |restaurant| %>
+      <%= restaurant.label :name, "Name" %>
+      <%= restaurant.text_field :name , class: "form-control" %>
 
-    <%= restaurant.label :tel, "Tel" %>
-    <%= restaurant.text_field :tel , class: "form-control" %>
+      <%= restaurant.label :tel, "Tel" %>
+      <%= restaurant.text_field :tel , class: "form-control" %>
 
-    <%= restaurant.label :address, "Address" %>
-    <%= restaurant.text_field :address , class: "form-control" %>
+      <%= restaurant.label :address, "Address" %>
+      <%= restaurant.text_field :address , class: "form-control" %>
 
-    <%= restaurant.label :opening_hours, "Opening Hours" %>
-    <%= restaurant.text_field :opening_hours , class: "form-control" %>
+      <%= restaurant.label :opening_hours, "Opening Hours" %>
+      <%= restaurant.text_field :opening_hours , class: "form-control" %>
 
-    <%= restaurant.label :description, "Description" %>
-    <%= restaurant.text_area :description , class: "form-control" %>
+      <%= restaurant.label :description, "Description" %>
+      <%= restaurant.text_area :description , class: "form-control" %>
 
-    <%= restaurant.label :image, "Photo" %>
-    <%= image_tag @restaurant.image, width: '300px' if @restaurant.image? %>
-    <%= restaurant.file_field :image %>
+      <%= restaurant.label :image, "Photo" %>
+      <%= image_tag @restaurant.image, width: '300px' if @restaurant.image? %>
+      <%= restaurant.file_field :image %>
 
-   <%= restaurant.submit %> 
-  <%end %>
-
+     <%= restaurant.submit %> 
+    <%end %>
+  </div>
   <%= link_to "Home", admin_restaurants_path %>
 
 </div>

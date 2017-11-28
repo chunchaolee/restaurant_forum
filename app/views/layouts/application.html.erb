@@ -2,6 +2,7 @@
 <html>
   <head>
     <title>RestaurantForum</title>
+    <meta name= 'viewport' content= 'width=devise-width, initial-scale=1.0'>
     <%= csrf_meta_tags %>
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
@@ -10,11 +11,16 @@
 
   <body>
     
-    <nav class="navbar navbar-default">
-      <div class="container" >
+    <nav class="navbar navbar-default container">
+      
+
+        <button type="button" class="menu-button">三</button>
+        <input type="checkbox" class="menu-button-checkbox">
+
         <!-- login & logout -->
         <% if current_user %>
           Hi, <%= current_user.email %>
+          <div class="menu">
           <%= link_to "<span class='glyphicon glyphicon-log-out'></span>  登出".html_safe, destroy_user_session_path, class: "btn btn-default navbar-btn",:method => :delete %>  
 
           <%= link_to "<span class='glyphicon glyphicon-lock'></span>  修改密碼".html_safe, edit_registration_path(:user), class: "btn btn-default navbar-btn" %>
@@ -22,14 +28,16 @@
           <%= link_to "<span class='glyphicon glyphicon-home'></span>  首頁".html_safe, root_path, class: "btn btn-default navbar-btn" %>
 
           <%= link_to "<span class='glyphicon glyphicon-user'></span>  餐廳後台".html_safe, admin_restaurants_path, class: "btn btn-default navbar-btn" %>
-          
+          </div>
 
         <% else %>
+          <div class="menu">
           <%= link_to "<span class='glyphicon glyphicon-cog'></span>  註冊".html_safe, new_registration_path(:user), class: "btn btn-default navbar-btn" %>  
 
           <%= link_to "<span class='glyphicon glyphicon-log-in'></span>  登入".html_safe, new_session_path(:user), class: "btn btn-default navbar-btn" %> 
+          </div>
         <% end %>
-      </div>
+      
     </nav>
 
     <!-- flash msg -->

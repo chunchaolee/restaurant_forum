@@ -1,0 +1,96 @@
+.container {
+  box-sizing: content-box ;  
+  width: 800px;
+  margin: 0 auto;
+}
+
+
+
+.nav {
+  box-sizing: content-box;
+  position: fixed;
+  top: 0;
+  left: 0;
+  margin: auto;
+  z-index: 100;    
+}
+
+
+.well {
+  color: white;
+  background-color: #888888;
+}
+
+.navbar-default {
+  background-color: #AAAAAA;
+}
+
+
+
+
+
+@media screen and (min-width: 768px) {
+  
+
+  .menu-button {
+    display: none;
+  }
+  .menu-button-checkbox {
+    display: none;
+  }
+}
+
+
+@media screen and (max-width: 767px) {
+  .container {
+    box-sizing: content-box ;
+    margin: auto;
+  }
+
+  .menu-button {
+    float: right;
+    font-size: 25px;
+    line-height: 40px;
+    color: white;
+    background: transparent;
+    padding: 0 15px;
+    border: 0;
+  }
+
+  .menu {
+    display: none;
+    margin-top: 0;
+    padding-left: 0;
+    position: fixed;
+    right: 0;
+    top: 0px;
+    width: 150px;
+    height: 100%;
+    background: none;
+  }
+
+  .menu li {
+    border: 0;
+    border-radius: 0;
+  }
+
+  .menu-button-checkbox {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 55px;
+    height: 40px;
+    opacity: 0;
+  }
+
+  .menu-button-checkbox:checked ~ .menu {
+    display: block;
+  }
+
+  .navbar-btn {
+    margin-top: 2px;
+    margin-bottom: 0;
+  }
+
+
+}
