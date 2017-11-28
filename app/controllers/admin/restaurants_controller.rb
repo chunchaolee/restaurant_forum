@@ -37,7 +37,7 @@ class Admin::RestaurantsController < ApplicationController
     if @restaurant.update_attributes(restaurant_params)
       redirect_to admin_restaurant_url, :notice => "UPDATE NOTICE: 更新成功！"
     else
-      render :action => :edit, :notice => "UPDATE NOTICE: 更新失敗！"
+      render :action => :edit, :alert => "alert: 更新失敗！"
     end
   end
 

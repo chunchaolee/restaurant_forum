@@ -10,20 +10,42 @@
 
   <body>
     
-    <!-- flash msg -->
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
-    
-    <!-- login & logout -->
-    <% if current_user %>
-      Hi, <%= current_user.email %>
-      <%= link_to('登出', destroy_user_session_path, :method => :delete) %>  |
-      <%= link_to('修改密碼', edit_registration_path(:user)) %>
-    <% else %>
-      <%= link_to('註冊', new_registration_path(:user)) %>  |
-      <%= link_to('登入', new_session_path(:user)) %>
-    <% end %>
+    <nav class="navbar navbar-default">
+      <div class="container" >
+        <!-- login & logout -->
+        <% if current_user %>
+          Hi, <%= current_user.email %>
+          <%= link_to "<span class='glyphicon glyphicon-log-out'></span>  登出".html_safe, destroy_user_session_path, class: "btn btn-default navbar-btn",:method => :delete %>  
 
+          <%= link_to "<span class='glyphicon glyphicon-lock'></span>  修改密碼".html_safe, edit_registration_path(:user), class: "btn btn-default navbar-btn" %>
+
+          <%= link_to "<span class='glyphicon glyphicon-home'></span>  首頁".html_safe, root_path, class: "btn btn-default navbar-btn" %>
+
+          <%= link_to "<span class='glyphicon glyphicon-user'></span>  餐廳後台".html_safe, admin_restaurants_path, class: "btn btn-default navbar-btn" %>
+          
+
+        <% else %>
+          <%= link_to "<span class='glyphicon glyphicon-cog'></span>  註冊".html_safe, new_registration_path(:user), class: "btn btn-default navbar-btn" %>  
+
+          <%= link_to "<span class='glyphicon glyphicon-log-in'></span>  登入".html_safe, new_session_path(:user), class: "btn btn-default navbar-btn" %> 
+        <% end %>
+      </div>
+    </nav>
+
+    <!-- flash msg -->
+    <% if notice.present? %>
+      <div class="alert alert-success alert-dismissable" role="alert">
+        <button type="button" class="close" data-dismiss="alert" arial-label="Close"><span arial-hidden="true">&times;</span></button>
+        <%= notice %>
+      </div>
+    <% elsif alert.present? %> 
+      <div class="alert alert-danger alert-dismissable" role="alert">
+        <button type="button" class="close" data-dismiss="alert" arial-label="Close"><span arial-hidden="true">&times;</span></button>
+        <p><%= alert %></p>
+      </div>
+    <% end %>
+    
+    
     <%= yield %>
 
   </body>
