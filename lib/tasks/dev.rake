@@ -1,4 +1,5 @@
 namespace :dev do 
+
   task fake: :environment do
     Restaurant.destroy_all
 
@@ -7,7 +8,9 @@ namespace :dev do
         tel: FFaker::PhoneNumber.short_phone_number,
         address: FFaker::Address.street_address,
         opening_hours: FFaker::Time.datetime,
-        description: FFaker::Lorem.paragraph )
+        description: FFaker::Lorem.paragraph,
+        category: Category.all.sample
+         )
     end
     puts "have created fake restaurants"
     puts "now you have #{Restaurant.count} restaurants data"
