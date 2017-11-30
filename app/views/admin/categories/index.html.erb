@@ -1,6 +1,22 @@
 <div class="container">
   <h3 class="well">餐廳後台: Category 總表 ｜ 權限等級: Admin</h1>
   <%= link_to "Resturant 管理", admin_restaurants_path %>
+
+  <!-- Create category -->
+  <br \>
+    <div class="form-inline">
+      <%= form_for [:admin, @category] do |f| %>
+        <div class="form-group">
+          <%= f.text_field :name, placeholder: "Category Name", class: "form-control" %>          
+        </div>
+        <%= f.submit class: "btn btn-primary" %>
+      <% end %>
+    </div>
+
+    <!-- ERROR MSG -->
+
+
+  <br \>
   
   <div class="row">
     <div class="col-md-12">
