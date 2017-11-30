@@ -1,6 +1,10 @@
 class Admin::CategoriesController < ApplicationController
 
-  befor_action :authenticate_user!
-  befor_action :authenticate_admin?
+  before_action :authenticate_user!
+  before_action :authenticate_admin
+
+  def index
+    @categories = Category.all
+  end
 
 end

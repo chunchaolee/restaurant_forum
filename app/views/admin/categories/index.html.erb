@@ -1,0 +1,18 @@
+<div class="container">
+  <h3 class="well">餐廳後台: Category ｜ 權限等級: Admin</h1>
+  <%= link_to "Resturant 管理", admin_restaurants_path %>
+  <table class="table table-striped table-condensed">
+    <tr>
+      <th>#</th>
+      <th>Name</th>
+    </tr>  
+    
+      <% @categories.each do |category| %>
+        <tr>
+          <td><%= category.id %></td>
+          <td><%= category.name %></td>
+        </tr>
+      <% end %>
+
+  </table>
+</div>
