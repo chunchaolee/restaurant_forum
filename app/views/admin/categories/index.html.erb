@@ -10,11 +10,15 @@
           <%= f.text_field :name, placeholder: "Category Name", class: "form-control" %>          
         </div>
         <%= f.submit class: "btn btn-primary" %>
+
+        <!-- ERROR MSG -->
+        <% if @category.errors.any? %>
+          <%= @category.errors.full_messages.to_sentence %>
+        <% end %>
+
       <% end %>
+
     </div>
-
-    <!-- ERROR MSG -->
-
 
   <br \>
   
