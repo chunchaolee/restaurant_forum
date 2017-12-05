@@ -18,7 +18,7 @@
         <td><%= restaurant.address %></td>
         <td><%= restaurant.opening_hours %></td>
         <td><%= restaurant.description %></td>
-        <td><%= link_to "<span class='glyphicon glyphicon-open-file'></span>  SHOW".html_safe, admin_restaurant_path(restaurant), class: "btn btn-info" %></td>
+        <td><%= link_to "<span class='glyphicon glyphicon-open-file'></span>  SHOW".html_safe, restaurant_path(restaurant), class: "btn btn-info" %></td>
       </tr>
       <% end %>
     </table>

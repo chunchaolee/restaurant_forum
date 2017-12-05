@@ -1,4 +1,4 @@
-class Admin::RestaurantsController < ApplicationController
+class Admin::RestaurantsController < Admin::BaseController
 
   # Devise user model 內建認證authenticate_user! 方法 > ApplictonController
   
