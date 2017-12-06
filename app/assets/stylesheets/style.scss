@@ -8,7 +8,7 @@
 
 .nav {
   box-sizing: content-box;
-  position: fixed;
+  
   top: 0;
   left: 0;
   margin: auto;
@@ -42,6 +42,15 @@
   padding: 10px;
 }
 
+
+.nav-pills-center {
+  text-align: center;
+}
+
+.nav-pills-center > li {
+  float: none;
+  display: inline-block;
+}
 
 
 @media screen and (min-width: 768px) {
