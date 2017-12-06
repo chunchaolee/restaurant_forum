@@ -1,0 +1,25 @@
+<<div class="container">
+
+  <div class="row">
+    <!-- Category show -->
+    <ul class="nav nav-pills nav-pills-center">
+      
+      <li role="presentation">
+        <%= link_to "全部餐廳", root_path %>
+      </li>
+      
+      <% @categories.each do |category| %>
+        <li role="presentation" class="<%= "active" if category == @category %>">
+          <%= link_to category_path(category) do %>
+          <%= category.name %>
+          <% end %>
+        </li>
+      <% end %>
+    </ul>
+    
+    <br>
+
+    <!-- 餐聽div 內容 -->
+    <%= render partial: "shared/restaurant_list" %>
+  </div>
+</div>
