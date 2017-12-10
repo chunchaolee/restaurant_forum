@@ -1,4 +1,4 @@
-<<div class="container">
+<div class="container">
 
   <div class="row">
     <!-- Category show -->
@@ -22,4 +22,10 @@
     <!-- 餐聽div 內容 -->
     <%= render partial: "shared/restaurant_list" %>
   </div>
+</div>
+
+<!-- kaminari 分頁功能 -->
+<br>
+<div class="container text-center">
+  <%= paginate @restaurants %>
 </div>

@@ -35,10 +35,14 @@
       <%= restaurant.label :image, "Photo" %>
       <%= image_tag @restaurant.image, width: '300px' if @restaurant.image? %>
       <%= restaurant.file_field :image %>
-
-     <%= restaurant.submit %> 
+      
+      <br>
+      <br>
+      <div clss="container">
+        <%= restaurant.submit %> 
+      </div>
     <%end %>
-  </div>
-  <%= link_to "Home", admin_restaurants_path %>
+  </div class="container">
+  <%= link_to "餐廳後台首頁", admin_restaurants_path %>
 
 </div>

@@ -11,33 +11,45 @@
 
   <body>
     
-    <nav class="navbar navbar-default container">
-      
+    <!-- Navbar -->
+    <nav class="navbar-fixed-top navbar navbar-default">
+      <div class="container-fluid">
+        <!-- Brand and toggke get group for better mobile display -->
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <%= link_to "<span class='glyphicon glyphicon-home'></span>  餐廳評論網".html_safe, root_path, class: "navbar-brand" %>
+          <% if current_user %>
+            <span class="navbar-text">Hi, <%= current_user.email %></span>
+          <% end %>
+        </div>
+        
+        <!-- Collect the nav link, forms and other contect for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+          <ul class="pull-right text-right nav navbar-nav">
+            <% if current_user %>
+              <% if current_user.admin? %>
+                <li><%= link_to "<span class='glyphicon glyphicon-user'></span>  餐廳後台".html_safe, admin_restaurants_path, class: "btn btn-default navbar-btn" %></li>
+              <% end %>
 
-        <button type="button" class="menu-button">三</button>
-        <input type="checkbox" class="menu-button-checkbox">
+              <li><%= link_to "<span class='glyphicon glyphicon-log-out'></span>  登出".html_safe, destroy_user_session_path, class: "btn btn-default navbar-btn",:method => :delete %></li>
 
-        <!-- login & logout -->
-        <% if current_user %>
-          Hi, <%= current_user.email %>
-          <div class="menu">
-          <%= link_to "<span class='glyphicon glyphicon-log-out'></span>  登出".html_safe, destroy_user_session_path, class: "btn btn-default navbar-btn",:method => :delete %>  
+              <li><%= link_to "<span class='glyphicon glyphicon-lock'></span>  修改密碼".html_safe, edit_registration_path(:user), class: "btn btn-default navbar-btn" %></li>
 
-          <%= link_to "<span class='glyphicon glyphicon-lock'></span>  修改密碼".html_safe, edit_registration_path(:user), class: "btn btn-default navbar-btn" %>
+            <% else %>
 
-          <%= link_to "<span class='glyphicon glyphicon-home'></span>  首頁".html_safe, root_path, class: "btn btn-default navbar-btn" %>
+              <li><%= link_to "<span class='glyphicon glyphicon-cog'></span>  註冊".html_safe, new_registration_path(:user), class: "btn btn-default navbar-btn" %></li>
 
-          <%= link_to "<span class='glyphicon glyphicon-user'></span>  餐廳後台".html_safe, admin_restaurants_path, class: "btn btn-default navbar-btn" %>
-          </div>
+              <li><%= link_to "<span class='glyphicon glyphicon-log-in'></span>  登入".html_safe, new_session_path(:user), class: "btn btn-default navbar-btn" %> </li>
 
-        <% else %>
-          <div class="menu">
-          <%= link_to "<span class='glyphicon glyphicon-cog'></span>  註冊".html_safe, new_registration_path(:user), class: "btn btn-default navbar-btn" %>  
-
-          <%= link_to "<span class='glyphicon glyphicon-log-in'></span>  登入".html_safe, new_session_path(:user), class: "btn btn-default navbar-btn" %> 
-          </div>
-        <% end %>
-      
+            <% end %>
+          </ul>
+        </div>
+      </div>
     </nav>
 
     <!-- flash msg -->
