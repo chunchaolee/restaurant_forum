@@ -1,6 +1,8 @@
+# fake restaurant
+
 namespace :dev do 
 
-  task fake: :environment do
+  task fake_restaurant: :environment do
     Restaurant.destroy_all
 
     50.times do |i|
@@ -16,3 +18,46 @@ namespace :dev do
     puts "now you have #{Restaurant.count} restaurants data"
   end 
 end
+
+# fake user
+
+namespace :dev do 
+
+  task fake_user: :environment do
+
+      20.times do |i|
+        User.create(email: FFaker::Internet.free_email,
+          password: "123456"
+          )
+      end
+    puts "have created fake users"
+    puts "now you have #{User.count} restaurants data"
+
+  end 
+end
+
+# fake commet
+
+namespace :dev do 
+
+  task fake_comment: :environment do
+
+    @restaurants = Restaurant.all
+    @user = User.all 
+
+    @restaurants.each do |restaurant|
+
+      3.times do |i|
+        Comment.create(content: FFaker::BaconIpsum.sentence,
+          restaurant_id: restaurant.id,
+          user_id: @user.sample.id
+          )
+      end
+    end
+
+    puts "have created fake 3 comments in every restaurant show page."
+    puts "now you have #{Comment.count} restaurants data"
+
+  end 
+end
+
