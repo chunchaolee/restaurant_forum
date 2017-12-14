@@ -30,42 +30,45 @@
 <!-- Comments list -->
 <div class="container">
   <div class="row">
-    <% @restaurant.comments.each do |comment| %>
-      <div>
-        <h4><%= comment.user.name %></h4>
-        <p><%= simple_format comment.content %></p>
-        <p class="text-muted">
-          <em><%= comment.created_at %></em>    |
-          <em><%= time_ago_in_words(comment.created_at) %> ago </em>
-          
-          <!-- admin can delete comment -->
-          <% if current_user.admin? %>
-             · <%= link_to "Delete", restaurant_comment_path(@restaurant, comment), method: :delete, data:{confirm: "ARE YOU SURE?"}%>
-          <% end %>
+    <div class="col-lg-12 col-md-4">
+      <% @restaurant.comments.each do |comment| %>
+        <div>
+          <h4><%= comment.user.name %></h4>
+          <p><%= simple_format comment.content %></p>
+          <p class="text-muted">
+            <em><%= comment.created_at %></em>    |
+            <em><%= time_ago_in_words(comment.created_at) %> ago </em>
+            
+            <!-- admin can delete comment -->
+            <% if current_user.admin? %>
+               · <%= link_to "Delete", restaurant_comment_path(@restaurant, comment), method: :delete, data:{confirm: "ARE YOU SURE?"}%>
+            <% end %>
 
-        </p>
-        
-      </div>
-      <hr>
-    <% end %>
-    
+          </p>
+          
+        </div>
+        <hr>
+      <% end %>
+    </div>
   </div>
 </div>
 
 
 <!-- Creat Comment -->
-<div class="container">
+<div class="container text-center">
   <div class="row">
-    <!-- 新增評論的表單輸入框 -->
-    <%= form_for [@restaurant, @comment] do |f| %>
-    <div class="form-group">
-      <%= f.text_area :content, placeholder: "留個言吧", class: "form-control" %>
+    <div class="col-lg-12 col-md-4">
+      <!-- 新增評論的表單輸入框 -->
+      <%= form_for [@restaurant, @comment] do |f| %>
+      <div class="form-group">
+        <%= f.text_area :content, placeholder: "留個言吧", class: "form-control" %>
+      </div>
+      <div class="form-group">
+        <%= f.submit class: "btn btn-primary" %>
+        <%= f.button "Cancel", type: :reset, class: "btn btn-default" %>
+      </div>
+      <% end %>
     </div>
-    <div class="form-group">
-      <%= f.submit class: "btn btn-primary" %>
-      <%= f.button "Cancel", type: :reset, class: "btn btn-default" %>
-    </div>
-    <% end %>
   </div>
 </div>
 
@@ -76,4 +79,4 @@
   <% if current_user.admin? %>
       |  <%= link_to "<span class='glyphicon glyphicon-edit'></span>  EDIT".html_safe, edit_admin_restaurant_path(@restaurant), class: "btn btn-default" %>
   <% end %>
-</div>
+</div><br>
