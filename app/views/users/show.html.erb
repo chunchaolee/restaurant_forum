@@ -1,0 +1,15 @@
+<div class="container text-center">
+  <div class="row">
+    <div class="col-md-4">
+      <br>
+    </div>
+
+    <div class="col-md-8 form-group">
+      <h1><%= @user.name %></h1><br>
+      <h3><%= @user.email %></h3><br>
+      <p><%= simple_format@user.intro %></p>
+      <%= link_to "<span class='glyphicon glyphicon-edit'></span>  EDIT".html_safe, edit_user_path(@user), class: "btn btn-default" %>
+    </div>
+    
+  </div>
+</div>
