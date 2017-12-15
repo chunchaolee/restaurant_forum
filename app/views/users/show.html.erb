@@ -1,14 +1,15 @@
-<div class="container text-center">
+<div class="container text-center profile">
   <div class="row">
     <div class="col-md-4">
+      <%= image_tag @user.avatar, class: "img-responsive center-block" %>
       <br>
     </div>
 
     <div class="col-md-8 form-group">
-      <h1><%= @user.name %></h1><br>
+      <h1><%= @user.name %></h1><hr>
       <h3><%= @user.email %></h3><br>
       <p><%= simple_format@user.intro %></p>
-      <%= link_to "<span class='glyphicon glyphicon-edit'></span>  EDIT".html_safe, edit_user_path(@user), class: "btn btn-default" %>
+      <%= link_to "<span class='glyphicon glyphicon-edit'></span>  會員資料編輯".html_safe, edit_user_path(@user), class: "btn btn-default" %>
     </div>
     
   </div>
