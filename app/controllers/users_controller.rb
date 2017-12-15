@@ -1,19 +1,21 @@
 class UsersController < ApplicationController
 
+
   def show
-    @user = current_user
+    @user = User.find(params[:id])
+
   end
 
   def edit
-    @user = current_user
+    @user = User.find(params[:id])
   end
 
   def update
     @user = current_user
-    if @user.update_attributes!(user_params)
+    if @user.update_attributes(user_params)
       redirect_to user_url, :notice => "會員資料更新成功"
     else
-      render :action => :show
+      render :action => :edit
     end
   end
 

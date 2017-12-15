@@ -33,13 +33,14 @@
           <ul class="pull-right text-right nav navbar-nav">
             <% if current_user %>
               <% if current_user.admin? %>
-                <li><%= link_to "<span class='glyphicon glyphicon-user'></span>  餐廳後台".html_safe, admin_restaurants_path, class: "btn btn-default navbar-btn" %></li>
+                <li><%= link_to "<span class='glyphicon glyphicon-th-list'></span>  餐廳後台".html_safe, admin_restaurants_path, class: "btn btn-default navbar-btn" %></li>
               <% end %>
               
-              <li><%= link_to "<span class='glyphicon glyphicon-user'></span>  會員資料".html_safe, user_path(:user), class: "btn btn-default navbar-btn" %></li>
-              <li><%= link_to "<span class='glyphicon glyphicon-log-out'></span>  登出".html_safe, destroy_user_session_path, class: "btn btn-default navbar-btn",:method => :delete %></li>
+              <li><%= link_to "<span class='glyphicon glyphicon-user'></span>  會員資料".html_safe, user_path(current_user), class: "btn btn-default navbar-btn" %></li>
 
-              <li><%= link_to "<span class='glyphicon glyphicon-lock'></span>  修改會員資料".html_safe, edit_registration_path(:user), class: "btn btn-default navbar-btn" %></li>
+              <li><%= link_to "<span class='glyphicon glyphicon-lock'></span>  修改密碼".html_safe, edit_registration_path(:user), class: "btn btn-default navbar-btn" %></li>
+
+              <li><%= link_to "<span class='glyphicon glyphicon-log-out'></span>  登出".html_safe, destroy_user_session_path, class: "btn btn-default navbar-btn",:method => :delete %></li>
 
             <% else %>
 

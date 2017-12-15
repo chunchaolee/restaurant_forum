@@ -1,46 +1,55 @@
-<div class="container">
-<!-- 表單驗證 -->
-  
-  <% if @user.errors.present? %>
-    <ol class="container">
-    <% @user.errors.each do |error, message|%>
-      <div class="alert alert-danger" role="alert">
-      <li>WARNING: <%= "#{error.capitalize}  #{message}" %></li>
-      </div>
-    <% end %>
-    </ol>
-  <% end %>
-  
-  <%= form_for @user do |f| %>
-
-    <div class="field form-group">
-      <%= f.label :name , "Username"%><br />
-      <%= f.text_field :name,placeholder: "Enter username", class: "form-control" %>
-    </div>
-
-    <div class="field form-group">
-      <%= f.label :intro , "Intro"%><br />
-      <%= f.text_area :intro,placeholder: "Enter Intro", class: "form-control", rows: "8" %>
-    </div>
-
-    <div class="field form-group">
-      <%= f.label :avatar, "Photo" %>
-      <%= image_tag @user.avatar, width: '500px' if @user.avatar? %>
-      <%= f.file_field :avatar %>
-    </div>
+ <% if @user.id == current_user.id %> 
+  <div class="container">
+  <!-- 表單驗證 -->
     
+    <% if @user.errors.present? %>
+      <ol class="container">
+      <% @user.errors.each do |error, message|%>
+        <div class="alert alert-danger" role="alert">
+        <li>WARNING: <%= "#{error.capitalize}  #{message}" %></li>
+        </div>
+      <% end %>
+      </ol>
+    <% end %>
+    
+    <%= form_for @user do |f| %>
+
+      <div class="field form-group">
+        <%= f.label :name , "Username"%><br />
+        <%= f.text_field :name,placeholder: "Enter username", class: "form-control" %>
+      </div>
+
+      <div class="field form-group">
+        <%= f.label :intro , "自我介紹"%><br />
+        <%= f.text_area :intro,placeholder: "Enter Intro", class: "form-control", rows: "8" %>
+      </div>
+
+      <div class="field form-group">
+        <%= f.label :avatar, "Photo" %>
+        <%= image_tag @user.avatar, width: '500px' if @user.avatar? %>
+        <%= f.file_field :avatar %>
+      </div>
+      
+      <br>
+      <br>
+      <div clss="container">
+        <%= f.submit class: "btn btn-primary" %>   
+        <%= f.button "Cancel", type: :reset, class: "btn btn-default" %>
+      </div>
+
+    <% end %>
+
+  </div>
+  <br>
+  <hr>
+  <div class="container text-center">
+    <%= link_to "餐廳評論網首頁", restaurants_path %>
+  </div>
+<% else %>
+  <div class="container text-center">
     <br>
     <br>
-    <div clss="container">
-      <%= f.submit class: "btn btn-primary" %>   
-      <%= f.button "Cancel", type: :reset, class: "btn btn-default" %>
-    </div>
-
-  <% end %>
-
+    <h2><%= "非該會員，故無法編輯該會員資料" %></h2>
+    <%= link_to "回到會員資料", user_path(current_user) %>
 </div>
-<br>
-<hr>
-<div class="container text-center">
-  <%= link_to "餐廳評論網首頁", restaurants_path %>
-</div>
+<% end %>
