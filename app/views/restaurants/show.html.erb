@@ -33,7 +33,7 @@
     <div class="col-lg-12 col-md-4">
       <% @restaurant.comments.each do |comment| %>
         <div>
-          <h4><%= comment.user.name %></h4>
+          <h4><%= link_to comment.user.name, user_path(comment.user) %></h4>
           <p><%= simple_format comment.content %></p>
           <p class="text-muted">
             <em><%= comment.created_at %></em>    |

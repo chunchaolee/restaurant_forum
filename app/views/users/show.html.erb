@@ -13,8 +13,12 @@
       <% if @user.id == current_user.id %>
         <%= link_to "<span class='glyphicon glyphicon-edit'></span>  會員資料編輯".html_safe, edit_user_path(@user), class: "btn btn-default" %>
       <% end %>
-    
+
     </div>
     
   </div>
+  <br>
+  <br>
+  <hr>
+  <%= link_to "回到上一頁", :back, class: "btn btn-default" %>
 </div>
