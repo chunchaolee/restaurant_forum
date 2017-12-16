@@ -50,6 +50,8 @@
     <br>
     <br>
     <h2><%= "非該會員，故無法編輯該會員資料" %></h2>
-    <%= link_to "回到會員資料", user_path(current_user) %>
+    <%= link_to "回到會員資料", user_path(current_user) %>  |
+    <%= link_to "瀏覽該會員資料", user_path(@user) %>  |
+    <%= link_to "餐廳評論網首頁", restaurants_path %>
 </div>
 <% end %>

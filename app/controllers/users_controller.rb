@@ -1,17 +1,18 @@
 class UsersController < ApplicationController
 
+  before_action :set_user, only: [:show, :edit, :update]
 
   def show
-    @user = User.find(params[:id])
+    # set_user
 
   end
 
   def edit
-    @user = User.find(params[:id])
+    # set_user
   end
 
   def update
-    @user = current_user
+    # set_user
     if @user.update_attributes(user_params)
       redirect_to user_url, :notice => "會員資料更新成功"
     else
@@ -20,6 +21,10 @@ class UsersController < ApplicationController
   end
 
   private
+
+  def set_user
+    @user = User.find(params[:id])
+  end
 
   def user_params
     params.require(:user).permit(:avatar, :name, :intro)
