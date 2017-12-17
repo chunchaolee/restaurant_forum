@@ -17,6 +17,30 @@
     </div>
     
   </div>
+  
+  <br>
+  <hr>
+  <!-- commented_restaurants + Bootstrap Panel -->
+  <div class="panel panel-default">
+  <div class="panel-heading">
+    <h3 class="panel-title">Commented Restaurants</h3>
+  </div>
+  <div class="panel-body">
+    
+    <% @commented_restaurants.each do |commented_restaurant| %>
+      <%= link_to restaurant_path(commented_restaurant) do %>
+        <div class="my-restaurant">
+          <div>
+            <%= image_tag commented_restaurant.image, class: "img-responsive img-rounded" %>
+          </div>
+          <h5><%= commented_restaurant.name %></h5>
+        </div>
+      <% end %>
+    <% end %>
+      
+  </div>
+</div>
+
   <br>
   <br>
   <hr>

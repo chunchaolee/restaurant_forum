@@ -4,6 +4,9 @@ class User < ApplicationRecord
 
   has_many :comments
 
+  # 多對多關聯
+  has_many :restaurants, through: :comments
+
   mount_uploader :avatar, PhotoUploader
 
   # Include default devise modules. Others available are:

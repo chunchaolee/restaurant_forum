@@ -4,6 +4,8 @@ class UsersController < ApplicationController
 
   def show
     # set_user
+    # 多對多關聯資料
+    @commented_restaurants = @user.restaurants.uniq
 
   end
 

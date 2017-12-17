@@ -129,6 +129,35 @@ body {
 }
 
 
+
+
+
+.my-restaurant {
+  display: inline-block;
+  text-align: center;
+  padding: 7px 7px 0 7px;
+}
+
+.my-restaurant > div {
+  height: 60px;
+}
+
+.my-restaurant img {
+  max-height: 100%;
+}
+
+.panel a:hover .my-restaurant {
+   background-color: #eee;
+ }
+
+.panel-default > .panel-heading {
+    color: white;
+    background-color: #337ab7;
+    border-color: #ddd;
+}
+
+
+
 @media screen and (min-width: 768px) {
   
   .navbar-brand {
