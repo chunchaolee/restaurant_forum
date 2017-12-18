@@ -27,9 +27,10 @@ namespace :dev do
 
       20.times do |i|
         user_name = FFaker::Name.first_name
-        User.create(email: "#{user_name}.example.com",
+        User.create!(email: "#{user_name}@example.com",
           password: "123456",
-          name: "#{user_name}"
+          name: "#{user_name}",
+          intro: FFaker::HipsterIpsum.paragraph
           )
       end
     puts "have created fake users"
