@@ -15,10 +15,14 @@ class UsersController < ApplicationController
 
   def update
     # set_user
-    if @user.update_attributes(user_params)
-      redirect_to user_url, :notice => "會員資料更新成功"
+    if @user == current_user 
+      if @user.update_attributes(user_params)
+        redirect_to user_url, :notice => "會員資料更新成功"
+      else
+        render :action => :edit
+      end
     else
-      render :action => :edit
+      redirect_to user_path(@user), :alert => "NOT ALLOW"
     end
   end
 
