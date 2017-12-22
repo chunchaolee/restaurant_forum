@@ -1,7 +1,7 @@
 class Restaurant < ApplicationRecord
 
   belongs_to :category
-  has_many :comments
+  has_many :comments, dependent: :destroy 
   # 建立表單驗證
   validates_presence_of :name, :tel, :address, :opening_hours, :description
   # uploader photo

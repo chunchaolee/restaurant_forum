@@ -1,0 +1,11 @@
+<div class="container">
+  <h4><%= @restaurant.name %></h4>
+  <ul>
+    <li>有<%= @restaurant.comments.size %>筆評論</li>
+    <li>平均價位為1000000000</li>
+    <li>有n人收藏此餐廳</li>
+  </ul>
+  <br>
+  <hr>
+  <%= link_to "上一頁", :back %>
+</div>

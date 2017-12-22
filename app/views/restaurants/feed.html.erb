@@ -1,0 +1,43 @@
+<div class="container-fluid">
+  <div class="row">
+  <!-- Nav tab -->
+  <br>
+  <ul class="nav nav-tabs">
+    <li role="presentation"><%= link_to "餐廳評論網首頁", root_path %></li>
+    <li role="presentation" class="active"><%= link_to "最新動態", feed_restaurants_path %></li>    
+  </ul>
+  <br>
+
+    <!-- Recent_restaurants -->
+    <div class="col-md-6 col-sm-12">
+      <div class="panel panel-default">
+        <div class="panel-heading">最新餐廳</div>
+        <div class="panel panel-body">
+          <% @recent_restaurants.each do |restaurant| %>
+            <h4><%= link_to restaurant.name, restaurant_path(restaurant) %></h4>
+            <p class="text-muted"><%= restaurant.category.name %></p>
+            <p><%= truncate(restaurant.description, length: 80)%></p>
+            <hr>
+          <% end %>
+        </div>        
+      </div>
+    </div>
+
+    <!-- Recent_comments -->
+    <div class="col-md-6 col-sm-12">
+      <div class="panel panel-default">
+        <div class="panel panel-heading">最新評論</div>
+        <div class="panel panel-body">
+          <% @recent_comments.each do |comment| %>
+            <h4><%= link_to comment.restaurant.name, restaurant_path(comment.restaurant) %></h4>
+            <p><%= truncate(comment.content, length: 60) %></p>
+            <span class="text-muted"> - Commented by</span>
+            <%= link_to comment.user.name, user_path(comment.user) %>
+            <hr>
+          <% end %>
+        </div>
+      </div>
+    </div>
+    
+  </div>
+</div>
