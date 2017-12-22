@@ -9,6 +9,15 @@ Rails.application.routes.draw do
 
     resources :comments, only: [:create, :destroy]
 
+    # 在restaurant下新增自訂路由
+    collection do
+      get :feed
+    end
+
+    member do
+      get :dashboard
+    end
+
   end
 
   resources :categories, only: [:show]
