@@ -10,4 +10,9 @@ class Restaurant < ApplicationRecord
   validates_presence_of :name, :tel, :address, :opening_hours, :description
   # uploader photo
   mount_uploader :image, PhotoUploader
+
+  # is_favorited? instance method
+  def is_favorited?(user)
+    self.favorited_users.include?(user)
+  end
 end
