@@ -7,6 +7,9 @@ class User < ApplicationRecord
   # 多對多關聯
   has_many :restaurants, through: :comments
 
+  has_many :favorites, dependent: :destroy
+  has_many :favorited_restaurants, through: :favorites, source: :restaurant
+
   mount_uploader :avatar, PhotoUploader
 
   # Include default devise modules. Others available are:
