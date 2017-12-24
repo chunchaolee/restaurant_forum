@@ -25,6 +25,7 @@ class RestaurantsController < ApplicationController
   def favorite
     # set_restaurant before action
     @restaurant.favorites.create!(user: current_user)
+    save_favorites_count
     redirect_back(fallback_location: root_path)
   end
 
@@ -32,6 +33,7 @@ class RestaurantsController < ApplicationController
     # set_restaurant before action
     favorites = Favorite.where(restaurant: @restaurant, user: current_user)
     favorites.destroy_all
+    save_favorites_count
     redirect_back(fallback_location: root_path)
   end
 
@@ -48,6 +50,7 @@ class RestaurantsController < ApplicationController
     redirect_back(fallback_location: root_path)
   end
 
+  
 
 
 
@@ -55,6 +58,11 @@ class RestaurantsController < ApplicationController
 
   def set_restaurant
     @restaurant = Restaurant.find(params[:id])
+  end
+
+  def save_favorites_count
+    @restaurant.favorites_count = @restaurant.favorited_users.count
+    @restaurant.save!
   end
 
 end
