@@ -20,7 +20,7 @@ class Restaurant < ApplicationRecord
   end
 
   # is_liked? instance method
-   def is_liked?(user)
+  def is_liked?(user)
     self.liked_users.include?(user)
   end
 

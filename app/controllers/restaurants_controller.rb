@@ -50,6 +50,7 @@ class RestaurantsController < ApplicationController
 
 
 
+
   private
 
   def set_restaurant

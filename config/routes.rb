@@ -28,6 +28,10 @@ Rails.application.routes.draw do
       post :unlike
     end
 
+    collection do
+      get :ranking
+    end
+
   end
 
   resources :categories, only: [:show]
