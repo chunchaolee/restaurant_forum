@@ -10,6 +10,9 @@ class User < ApplicationRecord
   has_many :favorites, dependent: :destroy
   has_many :favorited_restaurants, through: :favorites, source: :restaurant
 
+  has_many :likes, dependent: :destroy
+  has_many :liked_restaurants, through: :likes, source: :restaurant
+
   mount_uploader :avatar, PhotoUploader
 
   # Include default devise modules. Others available are:

@@ -6,6 +6,9 @@ class Restaurant < ApplicationRecord
   has_many :favorites, dependent: :destroy
   has_many :favorited_users, through: :favorites, source: :user
 
+  has_many :likes, dependent: :destroy
+  has_many :liked_users, through: :likes, source: :user
+
   # 建立表單驗證
   validates_presence_of :name, :tel, :address, :opening_hours, :description
   # uploader photo
