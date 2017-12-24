@@ -1,0 +1,5 @@
+<% if restaurant.is_liked?(current_user) %>
+  <%= link_to "<span class='glyphicon glyphicon-thumbs-down'></span>  Unlike".html_safe, unlike_restaurant_path(restaurant), method: :post, class: "btn btn-info" %>
+<% else %>
+  <%= link_to "<span class='glyphicon glyphicon-thumbs-up'></span>  Like".html_safe, like_restaurant_path(restaurant), method: :post, class: "btn btn-primary" %>
+<% end %>

@@ -8,7 +8,9 @@
         <p class="label label-default"><%= restaurant.category.name %></p>
         <p><%= truncate(restaurant.description, length: 60) %></p>
         <!-- is_favorited -->
-        <p><%= render partial: "shared/favorite", locals: {restaurant: restaurant} %></p>
+        <p><%= render partial: "shared/favorite", locals: {restaurant: restaurant} %>  |
+        <!-- like/unlike 判斷 + like partial-->
+        <%= render partial: "shared/like", locals: {restaurant: restaurant} %></p>
       </div>
     </div>
   </div>
