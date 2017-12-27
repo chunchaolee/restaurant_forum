@@ -1,3 +1,23 @@
+# fake user
+
+namespace :dev do 
+
+  task fake_user: :environment do
+
+      20.times do |i|
+        user_name = FFaker::Name.first_name
+        User.create!(email: "#{user_name}@example.com",
+          password: "123456",
+          name: "#{user_name}",
+          intro: FFaker::HipsterIpsum.paragraph
+          )
+      end
+    puts "have created fake users"
+    puts "now you have #{User.count} users data"
+
+  end 
+end
+
 # fake restaurant
 
 namespace :dev do 
@@ -19,48 +39,27 @@ namespace :dev do
   end 
 end
 
-# fake user
 
-namespace :dev do 
-
-  task fake_user: :environment do
-
-      20.times do |i|
-        user_name = FFaker::Name.first_name
-        User.create!(email: "#{user_name}@example.com",
-          password: "123456",
-          name: "#{user_name}",
-          intro: FFaker::HipsterIpsum.paragraph
-          )
-      end
-    puts "have created fake users"
-    puts "now you have #{User.count} restaurants data"
-
-  end 
-end
-
-# fake commet
+# fake commet`
 
 namespace :dev do 
 
   task fake_comment: :environment do
 
     @restaurants = Restaurant.all
-    @user = User.all 
+    @users = User.all 
 
     @restaurants.each do |restaurant|
 
-      3.times do |i|
-        Comment.create(content: FFaker::BaconIpsum.sentence,
-          restaurant_id: restaurant.id,
-          user_id: @user.sample.id
-          )
-      end
+    3.times do |i|
+      Comment.create(content: FFaker::BaconIpsum.sentence,
+        restaurant_id: restaurant.id,
+        user_id: @users.sample.id
+        )
     end
+  end
 
     puts "have created fake 3 comments in every restaurant show page."
-    puts "now you have #{Comment.count} restaurants data"
-
-  end 
-end
+    puts "now you have #{Comment.count} comments data"
+end 
 

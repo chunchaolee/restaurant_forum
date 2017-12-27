@@ -40,8 +40,11 @@ class Admin::CategoriesController < Admin::BaseController
 
   def destroy
     # set_category
-    @category.destroy
-    redirect_to admin_categories_path, :notice => "Category 刪除成功！"
+    if @category.destroy
+      redirect_to admin_categories_path, :notice => "Category 刪除成功！"
+    else
+      redirect_to admin_categories_path, :alert => "Category 刪除失敗！"
+    end
 
   end
 

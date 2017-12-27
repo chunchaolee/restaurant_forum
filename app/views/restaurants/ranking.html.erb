@@ -3,7 +3,7 @@
     <!-- nav tab -->
     <br>
     <ul class="nav nav-tabs">
-      <li role="presentation"><%= link_to "餐廳評論網首頁", root_path %></li>
+      <li role="presentation"><%= link_to "餐廳評論網", root_path %></li>
       <li role="presentation"><%= link_to "最新動態", feed_restaurants_path %></li>
       <li role="presentation" class="active"><%= link_to "TOP10人氣收藏餐廳", ranking_restaurants_path %></li>  
     </ul>
@@ -21,7 +21,7 @@
           <div class="col-md-8">
             <h3><%= link_to restaurant.name, restaurant_path(restaurant) %></h3>
             <p class="label label-default"><%= restaurant.category.name %></p>  ｜
-            <p class="label label-default">收藏數：<%= restaurant.favorites.count %></p>
+            <p class="label label-info">收藏數：<%= restaurant.favorites.count %></p>
             <p><%= truncate(restaurant.description, length: 60) %></p>
             <!-- is_favorited -->
             <p><%= render partial: "shared/favorite", locals: {restaurant: restaurant} %>  |
