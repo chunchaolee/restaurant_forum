@@ -26,7 +26,11 @@
           <h4><%= user.name %></h4>
         <% end %>
         <!-- following? -->
-        <%= render partial: "shared/follow", locals: {user: user}%>
+        <%= render partial: "shared/follow", locals: {user: user}%>  |
+
+        <!-- friend -->
+        <%= link_to "Friend", friendships_path(friend_id: user), method: :post, class: "btn btn-info" %>
+
 
       </div>
     <% end %>

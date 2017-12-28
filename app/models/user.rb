@@ -26,7 +26,7 @@ class User < ApplicationRecord
   # 一個user，可以有很多的交友紀錄（很多紀錄在friendships table）
   has_many :friendships, dependent: :destroy
   # 一個user，可已透過多筆交友紀錄，得知有多少user是自己的朋友
-  has_many :all_friends, through: :friendships
+  has_many :friends, through: :friendships
 
 
   mount_uploader :avatar, PhotoUploader
