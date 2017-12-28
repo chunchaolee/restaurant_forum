@@ -2,6 +2,10 @@ class UsersController < ApplicationController
 
   before_action :set_user, only: [:show, :edit, :update]
 
+  def index
+    @users = User.all
+  end
+
   def show
     # set_user
     # 多對多關聯資料

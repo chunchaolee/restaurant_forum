@@ -1,4 +1,7 @@
 class Followship < ApplicationRecord
+
+  validates :following_id, uniqueness: {scope: :user_id}
+
   # 一筆追蹤紀錄，屬於發出追蹤的user
   belongs_to :user
   # 一筆追蹤紀錄，也屬於被追蹤的使用者
