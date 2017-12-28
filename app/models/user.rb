@@ -13,10 +13,15 @@ class User < ApplicationRecord
   has_many :likes, dependent: :destroy
   has_many :liked_restaurants, through: :likes, source: :restaurant
 
-  # 一個user，可以追蹤很多人（有很多追蹤紀錄followships）
+  # 一個user，可以有多筆追蹤紀錄（有很多追蹤紀錄在followships table）
   has_many :followships, dependent: :destroy
-  # 一個user，可以有很多正在追蹤的人(followings)
+  # 一個user，可以透過followships table得知正在追蹤的其他users(followings)
   has_many :followings, through: :followships
+
+  # 一個user，可以有很多筆被追蹤的紀錄(很多筆被追蹤的紀錄在followships table)
+  has_many :inverse_followships, class_name: "followships", foriegn_key: "following_id"
+  #一個user，可以透過followships table得到有哪些user正在追蹤自己(follower)
+  has_many :followers, through: :inverse_followships, source: :user 
 
   mount_uploader :avatar, PhotoUploader
 
