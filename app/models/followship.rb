@@ -6,4 +6,5 @@ class Followship < ApplicationRecord
   belongs_to :user
   # 一筆追蹤紀錄，也屬於被追蹤的使用者
   belongs_to :following, class_name: "User"
+
 end
