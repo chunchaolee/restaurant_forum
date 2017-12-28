@@ -14,7 +14,10 @@
       <% if @user.id == current_user.id %>
         <%= link_to "<span class='glyphicon glyphicon-edit'></span>  會員資料編輯".html_safe, edit_user_path(@user), class: "btn btn-default" %>
       <% else %>
-        <%= render partial: "shared/follow", locals: {user: @user} %>
+        <!-- follow -->
+        <%= render partial: "shared/follow", locals: {user: @user} %>  |
+        <!-- friend -->
+        <%= render partial: "shared/friend", locals: {user: @user} %>
       <% end %>
 
     </div>
