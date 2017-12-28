@@ -13,6 +13,11 @@ class User < ApplicationRecord
   has_many :likes, dependent: :destroy
   has_many :liked_restaurants, through: :likes, source: :restaurant
 
+  # 一個user，可以被很多人追蹤（有很多追蹤紀錄followships）
+  has_many :followships, dependent: :destroy
+  # 一個user，可以有很多正在追蹤的人(followings)
+  has_many :followings, through: :followships
+
   mount_uploader :avatar, PhotoUploader
 
   # Include default devise modules. Others available are:
