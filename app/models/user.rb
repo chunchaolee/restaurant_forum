@@ -18,15 +18,23 @@ class User < ApplicationRecord
   # 一個user，可以透過followships table得知正在追蹤的其他users(followings)
   has_many :followings, through: :followships
 
+  
   # 一個user，可以有很多筆被追蹤的紀錄(很多筆被追蹤的紀錄在followships table)
   has_many :inverse_followships, class_name: "Followship", foreign_key: "following_id"
   #一個user，可以透過followships table得到有哪些user正在追蹤自己(follower)
   has_many :followers, through: :inverse_followships, source: :user 
 
-  # 一個user，可以有很多的交友紀錄（很多紀錄在friendships table）
+  
+  # 一個user，可以有很多提交的交友紀錄（紀錄在friendships table）
   has_many :friendships, dependent: :destroy
-  # 一個user，可已透過多筆交友紀錄，得知有多少user是自己的朋友
+  # 一個user，可已透過已提交的多筆交友紀錄，得知有多少user是自己的朋友
   has_many :friends, through: :friendships
+
+
+  # 一個user，可以有很多筆被加為好友的交友紀錄（紀錄在friendships table）
+  has_many :inverse_friendships, class_name: "Friendship", foreign_key: "friend_id"
+  # 一個user，可以透過多筆被加為好友的交友紀錄，得知哪些user向自己提出交友(all_friends)
+  has_many :all_friends, through: :inverse_friendships, source: :user
 
 
   mount_uploader :avatar, PhotoUploader
