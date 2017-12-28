@@ -19,7 +19,7 @@ class User < ApplicationRecord
   has_many :followings, through: :followships
 
   # 一個user，可以有很多筆被追蹤的紀錄(很多筆被追蹤的紀錄在followships table)
-  has_many :inverse_followships, class_name: "followships", foriegn_key: "following_id"
+  has_many :inverse_followships, class_name: "Followship", foreign_key: "following_id"
   #一個user，可以透過followships table得到有哪些user正在追蹤自己(follower)
   has_many :followers, through: :inverse_followships, source: :user 
 

@@ -1,13 +1,14 @@
 <div class="container text-center profile">
   <div class="row">
     <div class="col-md-4">
-      <%= image_tag @user.avatar, class: "img-responsive center-block" %>
+      <%= image_tag @user.avatar, class: "img-responsive center-block img-circle" %>
       <br>
     </div>
 
     <div class="col-md-8 form-group">
-      <h1><%= @user.name %></h1><hr>
-      <h3><%= @user.email %></h3><br>
+      <h1 class="text-left"><%= @user.name %></h1><br>
+      <h5 class="text-left"><%= @user.email %></h5><br>
+      <p><%= @commented_restaurants.count %> 已評論餐廳，<%= @user.favorited_restaurants.count %> 收藏餐廳，<%= @user.followings.count %> Followings，<%= @user.followers.count %> Followers </p><hr>
       <p><%= simple_format@user.intro %></p>
 
       <% if @user.id == current_user.id %>
@@ -22,29 +23,108 @@
   
   <br>
   <hr>
-  <!-- commented_restaurants + Bootstrap Panel -->
-  <div class="panel panel-default">
-  <div class="panel-heading">
-    <h3 class="panel-title">Commented Restaurants</h3>
-  </div>
-  <div class="panel-body">
-    
-    <% @commented_restaurants.each do |commented_restaurant| %>
-      <%= link_to restaurant_path(commented_restaurant) do %>
-        <div class="my-restaurant">
-          <div>
-            <%= image_tag commented_restaurant.image, class: "img-responsive img-rounded" %>
-          </div>
-          <h5><%= commented_restaurant.name %></h5>
-        </div>
-      <% end %>
-    <% end %>
+  
+  <!-- followships -->
+  <div class="col-md-4">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title"><%= @user.followings.count%> Followings</h3>
+      </div>
       
+      <ul class="list-group text-left">
+        <% @user.followings.each do |user_following| %>
+          <li class="list-group-item">
+            <%= link_to user_path(user_following) do %>
+              <div class="user-item my-restaurant">
+                <%= image_tag user_following.avatar, height: "40px", width: "40px", class: "img-circle" %>
+                <%= user_following.name %>
+              </div>
+            <% end %> 
+          </li>
+        <% end %>
+      </ul>
+    </div>
+    
+    <!-- follower -->
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title"><%= @user.followers.count%> Followers</h3>
+      </div>
+      
+      <ul class="list-group text-left">
+        <% @user.followers.each do |follower| %>
+          <li class="list-group-item">
+            <%= link_to user_path(follower) do %>
+              <div class="user-item my-restaurant">
+                <%= image_tag follower.avatar, height: "40px", width: "40px", class: "img-circle" %>
+                <%= follower.name %>
+              </div>
+            <% end %> 
+          </li>
+        <% end %>
+      </ul>
+    </div>
+
   </div>
+
+
+  <!-- commented_restaurants + Bootstrap Panel + favorited_restaurants-->
+  <div class="col-md-8">
+    <!-- commented_restaurants -->
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title"><%= @commented_restaurants.count %> Commented Restaurants</h3>
+      </div>
+      <div class="panel-body">
+        
+        <% @commented_restaurants.each do |commented_restaurant| %>
+          <%= link_to restaurant_path(commented_restaurant) do %>
+            <div class="my-restaurant">
+              <div>
+                <%= image_tag commented_restaurant.image, class: "img-responsive img-rounded" %>
+              </div>
+              <h5><%= commented_restaurant.name %></h5>
+            </div>
+          <% end %>
+        <% end %>
+          
+      </div>
+    </div>
+
+    <!-- favorited_restaurants -->
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title"><%= @user.favorited_restaurants.count %> Favorited Restaurants</h3>
+      </div>
+
+      <div class="panel-body">
+        
+        <% @user.favorited_restaurants.each do |favorited_restaurant| %>
+          <%= link_to restaurant_path(favorited_restaurant) do %>
+            <div class="my-restaurant">
+              <div>
+                <%= image_tag favorited_restaurant.image, class: "img-responsive img-rounded" %>
+              </div>
+              <h5><%= favorited_restaurant.name %></h5>
+            </div>
+          <% end %>
+        <% end %>
+
+      </div>      
+    </div>
+
+  </div>
+
 </div>
 
+
+
+
+<div class="container text-center">
+  <%= link_to "回到上一頁", :back, class: "btn btn-default" %>  
   <br>
   <br>
-  <hr>
-  <%= link_to "回到上一頁", :back, class: "btn btn-default" %>
 </div>
+
+
+

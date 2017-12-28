@@ -22,11 +22,7 @@
       <div class="col-md-3 col-sm-4 col-xs-6 text-center user-item">
       
         <%= link_to user_path(user) do %>
-          <% if user.avatar != nil %>
-            <%= image_tag(user.avatar, class: "img-rounded", width: "128px", height: "128px") %>
-          <% else %>
-            <img src="http://via.placeholder.com/128x128">
-          <% end %>
+          <%= image_tag(user.avatar, class: "img-rounded", width: "128px", height: "128px") %>
           <h4><%= user.name %></h4>
         <% end %>
         <!-- following? -->
