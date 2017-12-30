@@ -8,9 +8,10 @@
     <div class="col-md-8 form-group">
       <h1 class="text-left"><%= @user.name %></h1><br>
       <h5 class="text-left"><%= @user.email %></h5><br>
-      <p><%= @commented_restaurants.count %> 已評論餐廳，<%= @user.favorited_restaurants.count %> 收藏餐廳，<%= @user.followings.count %> Followings，<%= @user.followers.count %> Followers </p><hr>
+      <p><%= @commented_restaurants.count %> 已評論餐廳，<%= @user.favorited_restaurants.count %> 收藏餐廳，<%= @user.followings.count %> Followings，<%= @user.followers.count %> Followers ，<%= @user.all_friends.count %> Friends</p><hr>
       <p><%= simple_format@user.intro %></p>
-
+      
+      <%= link_to "好友頁面", friend_user_path, class: "btn btn-default" %>
       <% if @user.id == current_user.id %>
         <%= link_to "<span class='glyphicon glyphicon-edit'></span>  會員資料編輯".html_safe, edit_user_path(@user), class: "btn btn-default" %>
       <% else %>

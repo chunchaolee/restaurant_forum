@@ -40,7 +40,13 @@ Rails.application.routes.draw do
 
   resources :categories, only: [:show]
 
-  resources :users, only: [:index, :show, :edit, :update]
+  resources :users, only: [:index, :show, :edit, :update] do
+
+    member do
+      get :friend
+    end
+
+  end
 
   namespace :admin do
 

@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
 
-  before_action :set_user, only: [:show, :edit, :update]
+  before_action :set_user, only: [:show, :edit, :update, :friend]
 
   def index
     @users = User.all
@@ -28,6 +28,11 @@ class UsersController < ApplicationController
     else
       redirect_to user_path(@user), :alert => "NOT ALLOW"
     end
+  end
+
+  def friend
+    # set_user
+    
   end
 
   private
